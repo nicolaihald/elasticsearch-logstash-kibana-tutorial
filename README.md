@@ -1,6 +1,6 @@
 Amazon Linux AMI 2014.09.2
 
-Elasticsearch 1.4.4
+Elasticsearch 1.5.0
 ===================
 
 Commands
@@ -11,11 +11,11 @@ yum update -y
 
 cd /root
 
-wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.4.noarch.rpm
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.5.0.noarch.rpm
 
-yum install elasticsearch-1.4.4.noarch.rpm -y
+yum install elasticsearch-1.5.0.noarch.rpm -y
 
-rm -f elasticsearch-1.4.4.noarch.rpm
+rm -f elasticsearch-1.5.0.noarch.rpm
 
 cd /usr/share/elasticsearch/
 
@@ -23,7 +23,9 @@ cd /usr/share/elasticsearch/
 
 ./bin/plugin -install lukas-vlcek/bigdesk
 
-./bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.4.1
+./bin/plugin -install royrusso/elasticsearch-HQ
+
+./bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.5.0
 
 cd /etc/elasticsearch
 
@@ -50,6 +52,11 @@ http.cors.allow-origin: "*"
 Commands
 --------
 service elasticsearch start 
+
+# Remember to grant access to elasticsearch: 
+chown -R elasticsearch /etc/elasticsearch
+
+
 
 
 Logstash 1.4.2
